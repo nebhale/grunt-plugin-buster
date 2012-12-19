@@ -1,0 +1,50 @@
+{
+	"name": "grunt-plugin-buster",
+	"version": "1.0.0-dev",
+
+	"dependencies": {
+		"lodash": "~0.10",
+		"node-phantom": "~0.1",
+		"when": "~1.7"
+	},
+	"devDependencies": {
+		"buster": "~0.6",
+		"grunt": "~0.4",
+		"grunt-cli": "~0.1",
+		"grunt-contrib-jshint": "~0.1",
+		"grunt-contrib-watch": "~0.2"
+	},
+	"engines": {
+		"node": "~0.8",
+		"npm": "~1.1"
+	},
+
+	"main": "./tasks/buster",
+	"scripts": {
+		"test": "grunt test"
+	},
+
+	"description": "A GruntJS plugin that runs BusterJS tests",
+	"keywords": [
+		"buster",
+		"busterjs",
+		"gruntplugin",
+		"phantom",
+		"phantomjs",
+		"test"
+	],
+	"licenses": [{
+		"type": "Apache-2.0",
+		"url": "http://opensource.org/licenses/Apache-2.0"
+	}],
+	"repositories": [{
+		"type": "git",
+		"url": "https://github.com/nebhale/grunt-plugin-buster"
+	}],
+	"bugs": "https://github.com/nebhale/grunt-plugin-buster/issues",
+	"maintainers": [{
+		"name": "Ben Hale",
+		"email": "nebhale@nebhale.com",
+		"web": "http://twitter.com/nebhale"
+	}]
+}
