@@ -23,7 +23,7 @@ var expect = buster.assertions.expect;
 var it = buster.spec.it;
 
 var grunt = require('grunt');
-var task = require('../src/buster');
+var task = require('../tasks/buster');
 
 describe('A Grunt Buster task', function() {
 

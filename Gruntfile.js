@@ -6,11 +6,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.loadTasks('src');
+	grunt.loadTasks('tasks');
 
 	grunt.initConfig({
 		locations: {
-			src: ['src/**/*.js'],
+			src: ['tasks/**/*.js'],
 			test: ['test/**/*.js']
 		},
 
