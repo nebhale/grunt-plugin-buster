@@ -19,7 +19,7 @@
 		"npm": "~1.1"
 	},
 
-	"main": "./tasks/buster",
+	"main": "./src/buster",
 	"scripts": {
 		"test": "grunt test"
 	},
