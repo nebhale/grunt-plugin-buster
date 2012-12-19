@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.registerTask('precommit', ['jshint', 'buster']);
+	grunt.registerTask('default', ['jshint', 'buster']);
 	grunt.registerTask('test', ['jshint', 'buster']);
 
 };
