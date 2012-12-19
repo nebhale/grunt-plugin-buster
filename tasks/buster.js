@@ -182,7 +182,9 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('buster', 'Run BusterJS tests', function() {
 		var done = this.async();
-		var options = this.options();
+		var options = this.options({
+			port: 1111
+		});
 
 		var startServerPromise = startServer(options);
 		var startPhantomJsPromise = startPhantomJs(startServerPromise, options);
