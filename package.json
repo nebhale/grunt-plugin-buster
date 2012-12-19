@@ -37,11 +37,13 @@
 		"type": "Apache-2.0",
 		"url": "http://opensource.org/licenses/Apache-2.0"
 	}],
-	"repositories": [{
+	"repository": {
 		"type": "git",
 		"url": "https://github.com/nebhale/grunt-plugin-buster"
-	}],
-	"bugs": "https://github.com/nebhale/grunt-plugin-buster/issues",
+	},
+	"bugs": {
+		"url": "https://github.com/nebhale/grunt-plugin-buster/issues"
+	},
 	"maintainers": [{
 		"name": "Ben Hale",
 		"email": "nebhale@nebhale.com",
