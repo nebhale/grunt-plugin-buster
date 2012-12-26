@@ -18,7 +18,6 @@
 'use strict';
 
 var buster = require('buster');
-var before = buster.spec.before;
 var describe = buster.spec.describe;
 var expect = buster.assertions.expect;
 var it = buster.spec.it;

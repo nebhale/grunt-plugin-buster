@@ -23,7 +23,6 @@ var describe = buster.spec.describe;
 var expect = buster.assertions.expect;
 var it = buster.spec.it;
 
-var grunt = require('grunt');
 var ChildFactory = require('../../tasks/support/child-factory');
 
 describe('A ChildFactory', function() {
