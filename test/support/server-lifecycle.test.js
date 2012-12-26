@@ -39,6 +39,7 @@ describe('A ServerLifecycle', function() {
 	var stderr;
 	var stdout;
 	var write;
+	var writeln;
 
 	before(function() {
 		create = this.stub();
@@ -50,6 +51,7 @@ describe('A ServerLifecycle', function() {
 		stderr = new EventEmitter();
 		stdout = new EventEmitter();
 		write = this.spy();
+		writeln = this.spy();
 
 		serverLifecycle = new ServerLifecycle({
 			create: create
@@ -59,7 +61,8 @@ describe('A ServerLifecycle', function() {
 			find: find
 		}, {
 			ok: ok,
-			write: write
+			write: write,
+			writeln: writeln
 		}, 12345);
 	});
 

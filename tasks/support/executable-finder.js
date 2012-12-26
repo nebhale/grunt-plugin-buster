@@ -26,7 +26,11 @@ function ExecutableFinder() {
 }
 
 ExecutableFinder.prototype.find = function(executable, callback) {
-	childProcess.exec('command -v ' + executable, this._path, function(error, stdout) {
+	childProcess.exec('command -v ' + executable, {
+		env: {
+			PATH: this._path
+		}
+	}, function(error, stdout) {
 		if(error) {
 			callback(error);
 		} else {

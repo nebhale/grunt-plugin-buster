@@ -49,6 +49,7 @@ ServerLifecycle.prototype.start = function(previous) {
 				}
 			}.bind(this));
 		} else {
+			this._log.writeln('Skipping BusterJS server start');
 			deferred.resolve();
 		}
 	}.bind(this), function(argument) {
@@ -77,6 +78,7 @@ ServerLifecycle.prototype._stop = function(callback, argument) {
 
 		this._server.kill();
 	} else {
+		this._log.writeln('Skipping BusterJS server stop');
 		callback(argument);
 	}
 };

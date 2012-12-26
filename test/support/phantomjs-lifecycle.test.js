@@ -35,17 +35,20 @@ describe('A PhantomJsLifecycle', function() {
 	var ok;
 	var phantomJsLifecycle;
 	var write;
+	var writeln;
 
 	before(function() {
 		isBrowser = this.stub();
 		ok = this.spy();
 		write = this.spy();
+		writeln = this.spy();
 
 		phantomJsLifecycle = new PhantomJsLifecycle({
 			isBrowser: isBrowser
 		}, {
 			ok: ok,
-			write: write
+			write: write,
+			writeln: writeln
 		}, 12345);
 	});
 
@@ -173,7 +176,7 @@ describe('A PhantomJsLifecycle', function() {
 		});
 	});
 
-	it('skips client desctruction if no client was started', function() {
+	it('skips client destruction if no client was started', function() {
 		var deferred = when.defer();
 		deferred.resolve();
 

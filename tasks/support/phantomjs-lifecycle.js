@@ -55,6 +55,7 @@ PhantomJsLifecycle.prototype.start = function(previous) {
 				}
 			}.bind(this));
 		} else {
+			this._log.writeln('Skipping PhantomJS client start');
 			deferred.resolve();
 		}
 	}.bind(this), function(argument) {
@@ -81,6 +82,7 @@ PhantomJsLifecycle.prototype._stop = function(callback, argument) {
 			callback(argument);
 		}.bind(this));
 	} else {
+		this._log.writeln('Skipping PhantomJS client stop');
 		callback(argument);
 	}
 };

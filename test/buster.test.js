@@ -28,10 +28,10 @@ var task = require('../tasks/buster');
 describe('A Grunt Buster task', function() {
 
 	it('is registered', function() {
-		this.spy(grunt, 'registerTask');
+		this.spy(grunt, 'registerMultiTask');
 
 		task(grunt);
 
-		expect(grunt.registerTask).toHaveBeenCalled();
+		expect(grunt.registerMultiTask).toHaveBeenCalled();
 	});
 });
