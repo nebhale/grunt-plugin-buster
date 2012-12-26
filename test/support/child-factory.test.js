@@ -18,20 +18,43 @@
 'use strict';
 
 var buster = require('buster');
+var before = buster.spec.before;
 var describe = buster.spec.describe;
 var expect = buster.assertions.expect;
 var it = buster.spec.it;
 
-var grunt = require('grunt');
-var task = require('../tasks/buster');
+var ChildFactory = require('../../tasks/support/child-factory');
 
-describe('A Grunt Buster task', function() {
+describe('A ChildFactory', function() {
 
-	it('is registered', function() {
-		this.spy(grunt, 'registerMultiTask');
+	var childFactory;
+	var error;
+	var write;
 
-		task(grunt);
+	before(function() {
+		error = this.spy();
+		write = this.spy();
+		childFactory = new ChildFactory({
+			error: error,
+			write: write
+		});
+	});
 
-		expect(grunt.registerMultiTask).toHaveBeenCalled();
+	it('directs stdout', function(done) {
+		var child = childFactory.create('pwd', ['-P']);
+
+		child.stdout.once('data', function (data) {
+			expect(write).toHaveBeenCalledWith(data.toString());
+			done();
+		});
+	});
+
+	it('directs stderr', function(done) {
+		var child = childFactory.create('pwd', ['-A']);
+
+		child.stderr.once('data', function (data) {
+			expect(error).toHaveBeenCalledWith(data.toString());
+			done();
+		});
 	});
 });

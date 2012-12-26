@@ -16,7 +16,7 @@
 
 /*jshint node:true*/
 
-exports.vas = {
+exports.buster = {
 	environment: 'node',
 	rootPath: '../',
 	tests: ['test/**/*.test.js']

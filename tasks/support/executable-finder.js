@@ -17,21 +17,26 @@
 /*jshint node:true*/
 'use strict';
 
-var buster = require('buster');
-var describe = buster.spec.describe;
-var expect = buster.assertions.expect;
-var it = buster.spec.it;
+var childProcess = require('child_process');
+var path = require('path');
 
-var grunt = require('grunt');
-var task = require('../tasks/buster');
 
-describe('A Grunt Buster task', function() {
+function ExecutableFinder() {
+	this._path = path.resolve('node_modules', '.bin') + ':' + process.env.PATH;
+}
 
-	it('is registered', function() {
-		this.spy(grunt, 'registerMultiTask');
-
-		task(grunt);
-
-		expect(grunt.registerMultiTask).toHaveBeenCalled();
+ExecutableFinder.prototype.find = function(executable, callback) {
+	childProcess.exec('command -v ' + executable, {
+		env: {
+			PATH: this._path
+		}
+	}, function(error, stdout) {
+		if(error) {
+			callback(error);
+		} else {
+			callback(undefined, stdout.split('\n')[0]);
+		}
 	});
-});
+};
+
+module.exports = ExecutableFinder;

@@ -17,21 +17,25 @@
 /*jshint node:true*/
 'use strict';
 
-var buster = require('buster');
-var describe = buster.spec.describe;
-var expect = buster.assertions.expect;
-var it = buster.spec.it;
+var path = require('path');
 
-var grunt = require('grunt');
-var task = require('../tasks/buster');
 
-describe('A Grunt Buster task', function() {
+function ConfigurationUtils (location, group) {
+	this._configuration = require(path.resolve(location))[group];
+	this._group = group;
+	this._location = location;
+}
 
-	it('is registered', function() {
-		this.spy(grunt, 'registerMultiTask');
+ConfigurationUtils.prototype.isBrowser = function() {
+	return this._configuration.environment === 'browser';
+};
 
-		task(grunt);
+ConfigurationUtils.prototype.configurationGroup = function() {
+	return this._group;
+};
 
-		expect(grunt.registerMultiTask).toHaveBeenCalled();
-	});
-});
+ConfigurationUtils.prototype.configurationLocation = function() {
+	return this._location;
+};
+
+module.exports = ConfigurationUtils;

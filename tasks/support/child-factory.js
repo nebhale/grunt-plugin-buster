@@ -17,21 +17,28 @@
 /*jshint node:true*/
 'use strict';
 
-var buster = require('buster');
-var describe = buster.spec.describe;
-var expect = buster.assertions.expect;
-var it = buster.spec.it;
+var childProcess = require('child_process');
 
-var grunt = require('grunt');
-var task = require('../tasks/buster');
 
-describe('A Grunt Buster task', function() {
+function ChildFactory(log) {
+	this._log = log;
+}
 
-	it('is registered', function() {
-		this.spy(grunt, 'registerMultiTask');
-
-		task(grunt);
-
-		expect(grunt.registerMultiTask).toHaveBeenCalled();
+ChildFactory.prototype.create = function(executable, args) {
+	var child = childProcess.spawn(executable, args, {
+		env: process.env,
+		setsid: true
 	});
-});
+
+	child.stdout.on('data', function(data) {
+		this._log.write(data.toString());
+	}.bind(this));
+
+	child.stderr.on('data', function (data) {
+		this._log.error(data.toString());
+	}.bind(this));
+
+	return child;
+};
+
+module.exports = ChildFactory;

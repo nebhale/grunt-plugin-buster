@@ -14,6 +14,10 @@ module.exports = function(grunt) {
 			test: ['test/**/*.js']
 		},
 
+		buster: {
+			buster: {}
+		},
+
 		jshint: {
 			src: '<%= locations.src %>',
 			test: '<%= locations.test %>',

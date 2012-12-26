@@ -15,23 +15,15 @@
  */
 
 /*jshint node:true*/
-'use strict';
 
-var buster = require('buster');
-var describe = buster.spec.describe;
-var expect = buster.assertions.expect;
-var it = buster.spec.it;
+exports.browser = {
+	environment: 'browser',
+	rootPath: '../',
+	tests: ['test/**/*.test.js']
+};
 
-var grunt = require('grunt');
-var task = require('../tasks/buster');
-
-describe('A Grunt Buster task', function() {
-
-	it('is registered', function() {
-		this.spy(grunt, 'registerMultiTask');
-
-		task(grunt);
-
-		expect(grunt.registerMultiTask).toHaveBeenCalled();
-	});
-});
+exports.node = {
+	environment: 'node',
+	rootPath: '../',
+	tests: ['test/**/*.test.js']
+};

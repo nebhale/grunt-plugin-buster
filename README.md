@@ -26,21 +26,15 @@ If the plugin has been installed correctly, running `grunt --help` at the comman
 ## Buster task
 _Run this task with the `grunt buster` command._
 
-This task starts a BusterJS server and a PhantomJS instance, runs all specified tests, and the shuts down the PhantomJS instance and BusterJS server.
+This task starts a BusterJS server and a PhantomJS instance (if `browser` tests), runs all specified tests, and the shuts down the PhantomJS instance and BusterJS server (if they were started).
 
 ### Options
 
 #### `config`
 Type: `string`
-Default: `test/buster.js` or `spec/buster.js`
+Default: `test/buster.js`
 
 This option sets the BusterJS configuration file to use when running tests.  This is the equivalent to using the `-c/--config` option with the `buster-test` cli.
-
-#### `groups`
-Type: `array`
-Default: all
-
-This option sets the BusterJS test configuration groups to load when running tests.  This is the equivalent to using the `-g/--config-group` option with the `buster-test` cli.
 
 #### `port`
 Type: `number`
@@ -56,10 +50,21 @@ This option sets the BusterJS test output reporter to use when running tests.  T
 
 ### Usage Examples
 
-For most usage, no configuration is required at all.  However, if the project being tested is non-standard, configuration would look like the following:
+#### Typical
+For typical usage, simply defining the name of config group is all that is required:
 
 ```js
 buster: {
+	app: {}
+}
+```
+
+#### Non-standard
+If the project being tested is non-standard, configuration would look like the following:
+
+```js
+buster: {
+	app: {},
 	options: {
 		config: 'test/another.buster.js',
 		groups: ['alpha-group', 'bravo-group'],

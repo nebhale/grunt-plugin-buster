@@ -18,20 +18,32 @@
 'use strict';
 
 var buster = require('buster');
+var before = buster.spec.before;
 var describe = buster.spec.describe;
 var expect = buster.assertions.expect;
 var it = buster.spec.it;
 
-var grunt = require('grunt');
-var task = require('../tasks/buster');
+var ExecutableFinder = require('../../tasks/support/executable-finder');
 
-describe('A Grunt Buster task', function() {
+describe('An ExecutableFinder', function() {
 
-	it('is registered', function() {
-		this.spy(grunt, 'registerMultiTask');
+	var executableFinder;
 
-		task(grunt);
+	before(function () {
+		executableFinder = new ExecutableFinder();
+	});
 
-		expect(grunt.registerMultiTask).toHaveBeenCalled();
+	it('finds an executable', function(done) {
+		executableFinder.find('node', function(err, executable) {
+			expect(/bin\/node/.test(executable)).toBe(true);
+			done();
+		});
+	});
+
+	it('returns an error when it cannot find an executable', function(done) {
+		executableFinder.find('foobarbaz', function(err) {
+			expect(err).toBeDefined();
+			done();
+		});
 	});
 });
