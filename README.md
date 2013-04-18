@@ -51,12 +51,21 @@ This option sets the BusterJS test output reporter to use when running tests.  T
 ### Usage Examples
 
 #### Typical
-For typical usage, simply defining the name of config group is all that is required:
+For typical usage, simply defining the name of config group (same as in your buster config) is all that is required:
 
 ```js
 buster: {
 	app: {}
 }
+```
+
+Buster config file:
+```js
+var config = module.exports;
+
+config.app = {
+  ...
+};
 ```
 
 #### Non-standard
