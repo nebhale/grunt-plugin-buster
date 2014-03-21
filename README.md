@@ -1,6 +1,9 @@
-# grunt-plugin-buster [![Build Status](https://secure.travis-ci.org/nebhale/grunt-plugin-buster.png?branch=master)](http://travis-ci.org/nebhale/grunt-plugin-buster)
+# grunt-plugin-buster
+[![Build Status](https://travis-ci.org/nebhale/grunt-plugin-buster.svg?branch=master)](https://travis-ci.org/nebhale/grunt-plugin-buster)
+[![Dependency Status](https://gemnasium.com/nebhale/grunt-plugin-buster.svg)](https://gemnasium.com/nebhale/grunt-plugin-buster)
+[![Code Climate](https://codeclimate.com/github/nebhale/grunt-plugin-buster.svg)](https://codeclimate.com/github/nebhale/grunt-plugin-buster)
 
-> Run BusterJS tests
+Run BusterJS tests
 
 ## Getting Started
 _If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide._
