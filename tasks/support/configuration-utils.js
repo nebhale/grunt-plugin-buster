@@ -27,7 +27,8 @@ function ConfigurationUtils (location, group) {
 }
 
 ConfigurationUtils.prototype.isBrowser = function() {
-	return this._configuration.environment === 'browser';
+	return this._configuration.environment === 'browser' || 
+         this._configuration.env === 'browser';
 };
 
 ConfigurationUtils.prototype.configurationGroup = function() {
